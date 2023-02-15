@@ -1,4 +1,5 @@
 ## PCK Source directory struct
+```
 source
     ├─character
     ├─icon
@@ -8,3 +9,4 @@ source
     │  └─spa
     ├─soul_carta
     └─locale.pck
+```
