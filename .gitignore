@@ -1,3 +1,5 @@
 /source/*
 *.json
 .vscode
+upload
+*.backup
