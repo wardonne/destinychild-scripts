@@ -225,25 +225,16 @@ class DCScripts
                 continue;
             }
             $charLive2DPath = self::CHARACTER_OUTPUT_PATH . '/' . $dirEntry;
-            if(is_dir($live2dPath . '/' . $dirEntry)) {
-                $this->rmdir($live2dPath . '/' . $dirEntry);
-            }
             $this->copyDir($charLive2DPath, $live2dPath . '/' . $dirEntry);
         }
         
         $portraitBattlePath = self::CHARACTER_UPLOAD_PATH . '/avatars/battle_avatar';
-        if(is_dir($portraitBattlePath)) {
-            $this->rmdir($portraitBattlePath);
-        }
         if(!is_dir(dirname($portraitBattlePath))) {
             mkdir(dirname($portraitBattlePath), 0777, true);
         }
         $this->copyDir(self::PORTRAIT_BATTLE_ICON_OUTPUT_PATH, $portraitBattlePath);
 
         $spaPath = self::CHARACTER_UPLOAD_PATH . '/avatars/spa';
-        if(is_dir($spaPath)) {
-            $this->rmdir($spaPath);
-        }
         $this->copyDir(self::SPA_ICON_OUTPUT_PATH, $spaPath);
         $this->output('Collated character resources');
     }
@@ -261,18 +252,12 @@ class DCScripts
         $this->copyDir(self::ITEM_ICON_OUTPUT_PATH, $avatarPath);
 
         $imagePath = self::SOUL_CARTA_UPLOAD_PATH . '/images';
-        if(is_dir($imagePath)) {
-            $this->rmdir($imagePath);
-        }
         if(!is_dir(dirname($imagePath))) {
             mkdir(dirname($imagePath), 0777, true);
         }
         $this->copyDir(self::SOUL_CARTA_OUTPUT_PATH, $imagePath);
 
         $live2dPath = self::SOUL_CARTA_UPLOAD_PATH . '/live2d';
-        if(is_dir($live2dPath)) {
-            $this->rmdir($live2dPath);
-        }
         if(!is_dir(dirname($live2dPath))) {
             mkdir(dirname($live2dPath), 0777, true);
         }
@@ -284,6 +269,7 @@ class DCScripts
             if(!preg_match('/^ig\d+_\d+$/', $dirEntry)) {
                 continue;
             }
+
             $charLive2DPath = self::CHARACTER_OUTPUT_PATH . '/' . $dirEntry;
             if(is_dir($live2dPath . '/' . $dirEntry)) {
                 $this->rmdir($live2dPath . '/' . $dirEntry);
@@ -322,7 +308,7 @@ class DCScripts
                 if($spaAvatarEntry === '.' || $spaAvatarEntry === '..') {
                     continue;
                 }
-                $spaAvatarEntries[] = 'spa/' . $dirEntry . '/' . $spaAvatarEntry;
+                $spaAvatars[] = 'spa/' . $dirEntry . '/' . $spaAvatarEntry;
             }
         }
 
@@ -562,8 +548,8 @@ class DCScripts
         // if(!$this->skipArchive) {
         //     $this->archive();
         // }
-        $this->push();
-        $this->clear();
+        // $this->push();
+        // $this->clear();
     }
 
     private function clear()
